@@ -17,6 +17,7 @@ def browser(request):
         browser = Chrome()
     yield browser
     browser.quit()
+    
 
 
 

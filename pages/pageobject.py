@@ -112,6 +112,37 @@ class BrokenImages(BasePage):
             if value == 'true':
                 counter += 1
         print(self.src)
-        assert counter == 1
+        assert counter == 3
+
+class JSAlerts(BasePage):
+    def __init__(self, browser, url, waits):
+        super().__init__(browser, url, waits)
+        self.go_to_site(L.JSALERTS)
+
+    def alert(self):
+        element = self.browser.find_element(*L.ALERT)
+        element.click()
+        alert = self.browser.switch_to.alert
+        alert.accept()
+        result_text = self.browser.find_element(*L.RESULT).text
+        assert result_text == 'You successfully clicked an alert'
+    
+    def confirm(self):
+        element = self.browser.find_element(*L.CONFIRM)
+        element.click()
+        alert = self.browser.switch_to.alert
+        alert.accept()
+        result_text = self.browser.find_element(*L.RESULT).text
+        assert result_text == 'You clicked: Ok'
+    
+    def prompt(self):
+        text = 'test'
+        element = self.browser.find_element(*L.PROMPT)
+        element.click()
+        alert = self.browser.switch_to.alert
+        alert.send_keys(text)
+        alert.accept()
+        result_text = self.browser.find_element(*L.RESULT).text
+        assert result_text == f'You entered: {text}'
 
 

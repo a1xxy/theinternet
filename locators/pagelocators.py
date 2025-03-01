@@ -17,4 +17,10 @@ class Locators:
     COLUMNB = (By.ID, 'column-b')
 
     BROKENIMAGES = (By.CSS_SELECTOR, '[href="/broken_images"]')
-    # BROKENIMAGE = (By.CSS_SELECTOR, 'img:nth-child(X)')
+    
+    JSALERTS = (By.CSS_SELECTOR, '[href="/javascript_alerts"]')
+    ALERT = (By.CSS_SELECTOR, 'li:nth-child(1) button:nth-child(1)')
+    CONFIRM = (By.CSS_SELECTOR, 'li:nth-child(2) button:nth-child(1)')
+    PROMPT = (By.CSS_SELECTOR, 'li:nth-child(3) button:nth-child(1)')
+    RESULT = (By.ID, 'result')
+    
