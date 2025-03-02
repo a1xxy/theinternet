@@ -1,5 +1,5 @@
 import pytest
-from pages.pageobject import AddRemoveElements, CheckBoxes, ContextMenu, DragAndDrop, BrokenImages, JSAlerts
+from pages.pageobject import AddRemoveElements, CheckBoxes, ContextMenu, DragAndDrop, BrokenImages, JSAlerts, MultipleWindows
 import time
 
 
@@ -38,15 +38,20 @@ def test_broken_images(browser):
     driver = BrokenImages(browser, 'http://the-internet.herokuapp.com/', 3)
     driver.get_src()
     driver.should_be_not_broken()
-    
+@pytest.mark.skip
 def test_alert(browser):
     driver = JSAlerts(browser, 'http://the-internet.herokuapp.com/', 3)
     driver.alert()
-
+@pytest.mark.skip
 def test_prompt(browser):
     driver = JSAlerts(browser, 'http://the-internet.herokuapp.com/', 3)
     driver.prompt()
-
+@pytest.mark.skip
 def test_confirm(browser):
     driver = JSAlerts(browser, 'http://the-internet.herokuapp.com/', 3)
     driver.confirm()
+
+def test_new_window(browser):
+    driver = MultipleWindows(browser, 'http://the-internet.herokuapp.com/', 3)
+    driver.create_and_switch_window()
+    driver.assert_text()

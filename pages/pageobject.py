@@ -145,4 +145,15 @@ class JSAlerts(BasePage):
         result_text = self.browser.find_element(*L.RESULT).text
         assert result_text == f'You entered: {text}'
 
+class MultipleWindows(BasePage):
+    def __init__(self, browser, url, waits):
+        super().__init__(browser, url, waits)
+        self.go_to_site(L.WINDOWS)
+
+    def create_and_switch_window(self):
+        self.browser.find_element(*L.OPENWINDOW).click()
+        windows = self.browser.window_handles
+        self.browser.switch_to.window(windows[-1])
+    def assert_text(self):
+        assert self.browser.find_element(*L.TEXT).text == 'New Window'
 

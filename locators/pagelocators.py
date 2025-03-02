@@ -24,3 +24,6 @@ class Locators:
     PROMPT = (By.CSS_SELECTOR, 'li:nth-child(3) button:nth-child(1)')
     RESULT = (By.ID, 'result')
     
+    WINDOWS = (By.CSS_SELECTOR, '[href="/windows"]')
+    OPENWINDOW = (By.CSS_SELECTOR, '[href="/windows/new"]')
+    TEXT = (By.TAG_NAME, 'h3')
